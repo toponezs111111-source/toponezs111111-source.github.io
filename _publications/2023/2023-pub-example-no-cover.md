@@ -1,3 +1,4 @@
+"""
 ---
 title:          "Publication without cover image"
 date:           2023-01-1 00:01:00 +0800
@@ -20,3 +21,4 @@ links:
   Code: https://github.com/luost26/bubble-visual-hash
   Demo: https://luost26.github.io/bubble-visual-hash
 ---
+"""
