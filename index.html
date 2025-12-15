@@ -4,61 +4,36 @@ title : Homepage
 navbar_title: Home
 ---
 
----
-layout: home
-title: Home
-# 如果不想显示左侧的大头像侧边栏，可以将下行改为 false
-author_profile: true
----
+<div class="row">
+    <div class="col-lg-3 col-md-4">
+        {% include widgets/profile_card_mini.html %}
+    </div>
+    <div class="col-lg-9 col-md-8">
 
-<h1 style="margin-bottom: 20px;">About Me</h1>
+        {% include widgets/profile_card_bio_only.html %}
 
-<div style="font-family: 'Lato', Arial, sans-serif; font-size: 16px; line-height: 1.6;">
-  <p>
-    Hello, I am <strong>Shuang Zhou</strong>. I am currently a first-year Master's student in <strong>Management Science and Engineering</strong> at the School of Management, 
-    <a href="https://www.hrbcu.edu.cn/" target="_blank">Harbin University of Commerce</a>, China. 
-    I received my Bachelor's degree in <strong>Quality Management Engineering</strong> from the same university in 2025.
-  </p>
+        <!-- Debugging widgets -->
+        {% include widgets/debug_repo_name.html %}
+        {% include widgets/debug_url.html %}
 
-  <p>
-    My research interests lie at the intersection of <strong>Management Science</strong> and <strong>Computer Vision</strong>, with a particular focus on <strong>Object Detection</strong>. 
-    I am dedicated to exploring the interdisciplinary integration of management theory and artificial intelligence to address complex real-world problems.
-  </p>
+        {% if site.data.display.homepage.show_experience %}
+            {% include widgets/experience_card.html %}
+        {% endif %}
+
+        {% if site.data.display.homepage.show_news %}
+        {% assign count_news = site.news | size %}
+        {% if count_news > 0 %}
+        {% include widgets/news_card.html limit=site.data.display.homepage.num_news %}
+        {% endif %}
+        {% endif %}
+
+        {% if site.data.display.homepage.show_selected_publications %}
+        {% assign pubs = site.publications | sort: "date" | reverse | where: "selected", true %}
+        {%
+        include widgets/publication_card.html
+        publications=pubs
+        title='<i class="fas fa-star"></i> Selected Publications'
+        %}
+        {% endif %}
+    </div>
 </div>
-
-<div style="margin-top: 25px; margin-bottom: 40px;">
-  <a href="mailto:zhoushuang706@qq.com" style="margin-right: 20px; text-decoration: none; font-weight: bold; color: #333;">
-    <i class="fas fa-envelope"></i> zhoushuang706@qq.com
-  </a>
-  
-  <a href="https://github.com/toponezs111111-source" target="_blank" style="margin-right: 20px; text-decoration: none; font-weight: bold; color: #333;">
-    <i class="fab fa-github"></i> GitHub
-  </a>
-
-  <a href="你的博客链接" target="_blank" style="text-decoration: none; font-weight: bold; color: #333;">
-    <i class="fas fa-rss"></i> Blog
-  </a>
-</div>
-
-<hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
-
-<h2 style="margin-bottom: 20px;">Honors & Awards</h2>
-
-<div style="font-family: 'Lato', Arial, sans-serif; font-size: 16px;">
-  
-  <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-    <span>Outstanding Graduate of Heilongjiang Province</span>
-    <span style="color: #666;">2025</span>
-  </div>
-
-  <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-    <span>Outstanding Student of Heilongjiang Province</span>
-    <span style="color: #666;">2023</span>
-  </div>
-
-  </div>
-
-<h2 style="margin-top: 40px; margin-bottom: 20px;">Recent News</h2>
-<ul style="font-family: 'Lato', Arial, sans-serif; font-size: 15px;">
-    <li><strong>[Dec. 2025]</strong> Updating my personal homepage.</li>
-</ul>
