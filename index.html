@@ -50,6 +50,25 @@ navbar_title: Home
         text-decoration: none;
     }
 
+    /* --- 4. 教育经历时间线 (Timeline) --- */
+    .timeline-container {
+        position: relative;
+    }
+    .timeline-line {
+        position: absolute;
+        left: 24px;   /* 线条水平位置，取决于Logo宽度 */
+        top: 40px;    /* 线条起始高度 */
+        bottom: 40px; /* 线条结束高度 */
+        width: 2px;
+        background-color: #e0e0e0;
+        z-index: 1;
+    }
+    .timeline-logo-wrapper {
+        position: relative;
+        z-index: 2;   /* 确保Logo在线条上面 */
+        background: #fff; /* 用白色背景遮挡穿过Logo的线条 */
+        padding: 5px 0;
+    }
 </style>
 
 <div class="row">
@@ -57,20 +76,19 @@ navbar_title: Home
 
         <div class="academic-card">
             <div class="row">
-               
-                <div class="col-md-3 d-flex flex-column align-items-center text-center mb-4 mb-md-0"></div>  
+                
+                <div class="col-md-3 text-center mb-4 mb-md-0">
                     <img src="assets/images/photos/shuang_portrait.jpg" 
                          alt="Shuang Zhou" 
-                         class="img-fluid rounded-lg shadow-sm mt-3 mb-3" 
-                         style="width: 160px; height: 160px; object-fit: cover; border: 3px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-        
-    
+                         class="img-fluid rounded shadow-sm mb-3" 
+                         style="width: 100%; max-width: 200px; border: 1px solid #f0f0f0;">
+                    
                     <h2 style="font-size: 1.6rem; font-weight: 700; color: #222; margin-bottom: 8px; letter-spacing: 0.5px;">
                         Shuang Zhou
                     </h2>
-    
+                    
                     <div style="font-size: 0.9rem; color: #666; background: #f4f4f4; padding: 4px 12px; border-radius: 20px; font-weight: 500;">
-                        Master's Student
+                        Master's Student  
                     </div>
                 </div>
 
