@@ -5,39 +5,43 @@ navbar_title: Home
 ---
 
 <style>
-    /* --- 1. 导航栏样式重置 (强制白底黑字) --- */
+    /* --- 1. 强制修改顶部导航栏样式 (Module 1) --- */
+    /* 无论原模版是黑色还是灰色，这里强制改为白色背景、黑色文字、加阴影 */
     header, nav, .navbar, .fixed-top {
         background-color: #ffffff !important;
         background-image: none !important;
         border-bottom: 1px solid #eaeaea !important;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
     }
+    
+    /* 导航栏文字颜色改为黑色 */
     .navbar-brand, .navbar-nav .nav-link, header a, nav a {
         color: #000000 !important;
         font-weight: 600 !important;
     }
 
-    /* --- 2. 统一的大模块卡片样式 --- */
+    /* --- 2. 统一的大模块卡片样式 (Image 5 风格) --- */
     .academic-card {
         background-color: #ffffff;
-        border-radius: 8px;            /* 稍微减小圆角，更严谨 */
-        box-shadow: 0 2px 15px rgba(0,0,0,0.03); /* 极简阴影 */
-        border: 1px solid #f0f0f0;     
-        padding: 40px;                 
-        margin-bottom: 30px;           
+        border-radius: 12px;           /* 圆角 */
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06); /* 柔和阴影 */
+        border: 1px solid #eaeaea;     /* 极细边框 */
+        padding: 40px;                 /* 内部留白 */
+        margin-bottom: 40px;           /* 模块间距 */
     }
 
-    /* --- 3. 按钮样式 (Module 2) --- */
+    /* --- 3. 按钮样式 --- */
     .btn-academic {
         width: 100%;
         border: 1px solid #e0e0e0;
         color: #555;
-        background: #fff;
+        background: #fdfdfd;
         font-weight: 500;
-        padding: 6px 0;
-        border-radius: 4px;
+        padding: 8px 0;
+        border-radius: 6px;
         transition: all 0.2s;
-        font-size: 0.9rem;
+        text-align: center;
+        display: inline-block;
     }
     .btn-academic:hover {
         background: #333;
@@ -46,32 +50,24 @@ navbar_title: Home
         text-decoration: none;
     }
 
-    /* --- 4. 教育经历时间线 (Timeline) - 精确校准 --- */
+    /* --- 4. 教育经历时间线 (Timeline) --- */
     .timeline-container {
         position: relative;
     }
-    /* 竖线 */
     .timeline-line {
         position: absolute;
-        /* 计算逻辑: 15px(col padding) + 24px(pl-4) + 25px(logo center) = 64px */
-        left: 64px; 
-        /* 这里的 top 和 bottom 控制线的长短 */
-        top: 25px;    /* 从第一行中间开始 */
-        bottom: 25px; /* 到最后一行中间结束 */
+        left: 24px;   /* 线条水平位置，取决于Logo宽度 */
+        top: 40px;    /* 线条起始高度 */
+        bottom: 40px; /* 线条结束高度 */
         width: 2px;
-        background-color: #e6e6e6;
+        background-color: #e0e0e0;
         z-index: 1;
     }
-    /* Logo 包装器：白色背景用于遮挡穿过Logo部分的线条，制造连接感 */
     .timeline-logo-wrapper {
-        width: 50px;       
-        height: 50px;
-        background: #fff;  /* 关键：遮挡背后的线 */
         position: relative;
-        z-index: 2;        /* 关键：浮在线上面 */
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        z-index: 2;   /* 确保Logo在线条上面 */
+        background: #fff; /* 用白色背景遮挡穿过Logo的线条 */
+        padding: 5px 0;
     }
 </style>
 
@@ -80,31 +76,27 @@ navbar_title: Home
 
         <div class="academic-card">
             <div class="row">
-                <div class="col-md-3 d-flex flex-column align-items-center text-center">
-                    
+                
+                <div class="col-md-3 text-center mb-4 mb-md-0">
                     <img src="assets/images/photos/shuang_portrait.jpg" 
                          alt="Shuang Zhou" 
-                         class="img-fluid rounded mb-3 shadow-sm" 
-                         style="width: 150px; height: auto; object-fit: cover; border: 1px solid #f0f0f0;">
+                         class="img-fluid rounded shadow-sm mb-3" 
+                         style="width: 100%; max-width: 200px; border: 1px solid #f0f0f0;">
                     
-                    <h3 style="font-size: 1.3rem; font-weight: 800; color: #000; margin-bottom: 8px;">
+                    <h2 style="font-size: 1.5rem; font-weight: 700; color: #000; margin-bottom: 5px;">
                         Shuang Zhou
-                    </h3>
+                    </h2>
                     
-                    <div style="font-size: 0.85rem; color: #555; margin-bottom: 4px; line-height: 1.4;">
-                        M.S. Student in <br>Management Science and Engineering
-                    </div>
-
-                    <div style="font-size: 0.85rem; font-weight: 700; color: #000;">
-                        Harbin University of Commerce
+                    <div style="font-size: 0.9rem; color: #555; line-height: 1.4;">
+                        Master's Student  
                     </div>
                 </div>
 
-                <div class="col-md-9 pl-md-5 mt-4 mt-md-0">
+                <div class="col-md-9 d-flex flex-column justify-content-center">
                     
-                    <h3 style="font-weight: 700; margin-bottom: 20px; font-size: 1.5rem;">Biography</h3>
+                    <h3 style="font-weight: 700; margin-bottom: 20px;">Biography</h3>
 
-                    <div class="text-justify mb-4" style="color: #444; line-height: 1.6; font-size: 1rem;">
+                    <div class="text-justify mb-4" style="color: #333; line-height: 1.7; font-size: 1.05rem;">
                         <p>
                             I am a first-year Master's student in <strong>Management Science and Engineering</strong> at <strong>Harbin University of Commerce</strong>, where I also completed my Bachelor's degree in <strong>Quality Management Engineering</strong>. My undergraduate background has provided me with a rigorous foundation in quality methodologies and engineering standards.
                         </p>
@@ -112,7 +104,7 @@ navbar_title: Home
                             Currently, my research centers on <strong>Computer Vision</strong>, with a specific focus on <strong>Object Detection</strong>. I am dedicated to exploring advanced deep learning algorithms to solve complex visual recognition tasks and enhance algorithmic efficiency.
                         </p>
                         <p>
-                            Committed to interdisciplinary innovation, I aim to bridge the gap between <strong>Quality Management</strong> and <strong>Artificial Intelligence</strong>. My goal is to leverage academic research to address practical industrial challenges.
+                            Committed to interdisciplinary innovation, I aim to bridge the gap between <strong>Quality Management</strong> and <strong>Artificial Intelligence</strong>. My goal is to leverage academic research to address practical industrial challenges, delivering solutions that integrate management theory with cutting-edge visual technology.
                         </p>
                     </div>
 
@@ -128,7 +120,7 @@ navbar_title: Home
                             </a>
                         </div>
                         <div class="col-4">
-                            <a href="#" class="btn-academic">
+                            <a href="https://toponezs111111-source.github.io/my-blog/" class="btn-academic">
                                 <i class="fas fa-pen-nib"></i> Blog
                             </a>
                         </div>
@@ -139,13 +131,13 @@ navbar_title: Home
 
 
         <div class="academic-card timeline-container">
-            <h3 class="mb-5" style="font-weight: bold; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px;">
+            <h3 class="mb-5" style="font-weight: bold; border-bottom: 2px solid #f8f9fa; padding-bottom: 15px;">
                 <i class="fas fa-graduation-cap" style="color: #000; margin-right: 10px;"></i>Education
             </h3>
 
             <div class="timeline-line"></div>
 
-            <div class="row mb-5 align-items-center">
+            <div class="row mb-5 position-relative align-items-center">
                 <div class="col-auto pl-4">
                     <div class="timeline-logo-wrapper">
                         <img src="assets/images/photos/huc_logo.png" style="width: 50px; height: 50px; object-fit: contain;">
@@ -153,7 +145,7 @@ navbar_title: Home
                 </div>
                 <div class="col pl-3">
                     <div class="d-flex justify-content-between align-items-center flex-wrap">
-                        <h5 class="mb-1 font-weight-bold" style="color: #000; font-size: 1.15rem;">Harbin University of Commerce</h5>
+                        <h5 class="mb-1 font-weight-bold" style="font-size: 1.2rem;">Harbin University of Commerce</h5>
                         <span class="badge badge-light border text-secondary p-2">Sep. 2025 - Jun. 2028</span>
                     </div>
                     <div class="text-dark">Master of Management Science and Engineering</div>
@@ -161,7 +153,7 @@ navbar_title: Home
                 </div>
             </div>
 
-            <div class="row align-items-center">
+            <div class="row position-relative align-items-center">
                 <div class="col-auto pl-4">
                     <div class="timeline-logo-wrapper">
                         <img src="assets/images/photos/huc_logo.png" style="width: 50px; height: 50px; object-fit: contain;">
@@ -169,7 +161,7 @@ navbar_title: Home
                 </div>
                 <div class="col pl-3">
                     <div class="d-flex justify-content-between align-items-center flex-wrap">
-                        <h5 class="mb-1 font-weight-bold" style="color: #000; font-size: 1.15rem;">Harbin University of Commerce</h5>
+                        <h5 class="mb-1 font-weight-bold" style="font-size: 1.2rem;">Harbin University of Commerce</h5>
                         <span class="badge badge-light border text-secondary p-2">Sep. 2021 - Jun. 2025</span>
                     </div>
                     <div class="text-dark">Bachelor of Quality Management Engineering</div>
@@ -180,25 +172,30 @@ navbar_title: Home
 
 
         <div class="academic-card">
-            <h3 class="mb-4" style="font-weight: bold; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px;">
+            <h3 class="mb-4" style="font-weight: bold; border-bottom: 2px solid #f8f9fa; padding-bottom: 15px;">
                 <i class="fas fa-medal" style="color: #000; margin-right: 10px;"></i>Honors & Awards
             </h3>
 
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <div class="p-3 border rounded d-flex align-items-center h-100" style="background: #fafafa;">
-                        <div class="mr-3 text-warning"><i class="fas fa-award fa-2x"></i></div>
+                    <div class="p-4 border rounded d-flex align-items-center h-100" style="background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+                        <div class="mr-3 text-warning">
+                            <i class="fas fa-award fa-2x"></i>
+                        </div>
                         <div>
-                            <div style="font-weight: 700;">Outstanding Student of Heilongjiang Province</div>
+                            <div style="font-weight: 700; color: #000;">Outstanding Student of Heilongjiang Province</div>
                             <div class="text-muted small mt-1">2023</div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-6 mb-3">
-                    <div class="p-3 border rounded d-flex align-items-center h-100" style="background: #fafafa;">
-                        <div class="mr-3 text-warning"><i class="fas fa-award fa-2x"></i></div>
+                    <div class="p-4 border rounded d-flex align-items-center h-100" style="background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+                        <div class="mr-3 text-warning">
+                            <i class="fas fa-award fa-2x"></i>
+                        </div>
                         <div>
-                            <div style="font-weight: 700;">Outstanding Graduate of Heilongjiang Province</div>
+                            <div style="font-weight: 700; color: #000;">Outstanding Graduate of Heilongjiang Province</div>
                             <div class="text-muted small mt-1">2025</div>
                         </div>
                     </div>
