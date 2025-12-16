@@ -56,12 +56,14 @@ navbar_title: Home
     }
     .timeline-line {
         position: absolute;
-        left: 24px;   /* 线条水平位置，取决于Logo宽度 */
+        left: 30px;   /* 线条水平位置，取决于Logo宽度 */
         top: 40px;    /* 线条起始高度 */
         bottom: 40px; /* 线条结束高度 */
         width: 2px;
         background-color: #e0e0e0;
         z-index: 1;
+        border-left: 2px dashed #000; /* 将实线改为黑色虚线 */
+        background-color: transparent; /* 移除原实线背景 */
     }
     .timeline-logo-wrapper {
         position: relative;
