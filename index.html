@@ -1,39 +1,118 @@
 ---
 layout: default
-title : Homepage
+title: Home
 navbar_title: Home
 ---
 
-<div class="row">
-    <div class="col-lg-3 col-md-4">
-        {% include widgets/profile_card_mini.html %}
+<div class="row mb-5 align-items-start">
+    <div class="col-12 col-md-3 text-center mb-3">
+        <img src="assets/images/photos/shuang_portrait.jpg" 
+             alt="Shuang Zhou" 
+             class="img-fluid rounded" 
+             style="border: 1px solid #f0f0f0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; max-width: 240px;">
     </div>
-    <div class="col-lg-9 col-md-8">
 
-        {% include widgets/profile_card_bio_only.html %}
+    <div class="col-12 col-md-9">
+        <h1 style="font-weight: 700; margin-bottom: 5px;">Shuang Zhou</h1>
+        <div style="color: #666; margin-bottom: 20px; font-size: 1.1rem;">
+            Master's Student in Management Science and Engineering<br>
+            Harbin University of Commerce
+        </div>
 
-        <!-- Debugging widgets -->
-        {% include widgets/debug_repo_name.html %}
-        {% include widgets/debug_url.html %}
+        <div class="text-justify" style="margin-bottom: 25px;">
+            <p>
+                I am a first-year Master's student in <strong>Management Science and Engineering</strong> at <strong>Harbin University of Commerce</strong>, where I also completed my Bachelor's degree in <strong>Quality Management Engineering</strong>. My undergraduate background has provided me with a rigorous foundation in quality methodologies and engineering standards.
+            </p>
+            <p>
+                Currently, my research centers on <strong>Computer Vision</strong>, with a specific focus on <strong>Object Detection</strong>. I am dedicated to exploring advanced deep learning algorithms to solve complex visual recognition tasks and enhance algorithmic efficiency.
+            </p>
+            <p>
+                Committed to interdisciplinary innovation, I aim to bridge the gap between <strong>Quality Management</strong> and <strong>Artificial Intelligence</strong>. My goal is to leverage academic research to address practical industrial challenges, delivering solutions that integrate management theory with cutting-edge visual technology.
+            </p>
+        </div>
 
-        {% if site.data.display.homepage.show_experience %}
-            {% include widgets/experience_card.html %}
-        {% endif %}
-
-        {% if site.data.display.homepage.show_news %}
-        {% assign count_news = site.news | size %}
-        {% if count_news > 0 %}
-        {% include widgets/news_card.html limit=site.data.display.homepage.num_news %}
-        {% endif %}
-        {% endif %}
-
-        {% if site.data.display.homepage.show_selected_publications %}
-        {% assign pubs = site.publications | sort: "date" | reverse | where: "selected", true %}
-        {%
-        include widgets/publication_card.html
-        publications=pubs
-        title='<i class="fas fa-star"></i> Selected Publications'
-        %}
-        {% endif %}
+        <div class="d-flex flex-wrap">
+            <a href="mailto:zhoushuang706@qq.com" class="btn btn-sm btn-outline-dark mr-2 mb-2" style="border-radius: 4px;">
+                <i class="fas fa-envelope"></i> Email
+            </a>
+            <a href="https://github.com/YourUsername" class="btn btn-sm btn-outline-dark mr-2 mb-2" style="border-radius: 4px;">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="assets/pdf/your_cv.pdf" class="btn btn-sm btn-outline-dark mr-2 mb-2" style="border-radius: 4px;">
+                <i class="fas fa-file-alt"></i> CV
+            </a>
+        </div>
     </div>
 </div>
+
+<hr style="margin: 40px 0; border-top: 1px solid #eee;">
+
+<div class="row">
+    <div class="col-12 col-md-8">
+        <h3 style="margin-bottom: 20px; font-weight: bold;">Education</h3>
+        
+        <div class="mb-4">
+            <div class="d-flex justify-content-between align-items-baseline">
+                <span style="font-weight: bold; font-size: 1.1rem;">Harbin University of Commerce</span>
+                <span style="font-style: italic; color: #666;">Sep. 2025 - Jun. 2028</span>
+            </div>
+            <div>School of Management</div>
+            <div>Master of Management Science and Engineering</div>
+        </div>
+
+        <div class="mb-4">
+            <div class="d-flex justify-content-between align-items-baseline">
+                <span style="font-weight: bold; font-size: 1.1rem;">Harbin University of Commerce</span>
+                <span style="font-style: italic; color: #666;">Sep. 2021 - Jun. 2025</span>
+            </div>
+            <div>School of Management</div>
+            <div>Bachelor of Quality Management Engineering</div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-4">
+        <h3 style="margin-bottom: 20px; font-weight: bold;">Honors & Awards</h3>
+        <ul style="padding-left: 20px; color: #333;">
+            <li class="mb-2">
+                <div class="d-flex justify-content-between">
+                    <span>Outstanding Student (Provincial)</span>
+                    <span style="color: #666; font-style: italic;">2023</span>
+                </div>
+            </li>
+            <li class="mb-2">
+                <div class="d-flex justify-content-between">
+                    <span>Outstanding Graduate (Provincial)</span>
+                    <span style="color: #666; font-style: italic;">2025</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<hr style="margin: 40px 0; border-top: 1px solid #eee;">
+
+{% if site.data.display.homepage.show_news %}
+    {% assign count_news = site.news | size %}
+    {% if count_news > 0 %}
+    <div class="row">
+        <div class="col-12">
+            {% include widgets/news_card.html limit=site.data.display.homepage.num_news %}
+        </div>
+    </div>
+    {% endif %}
+{% endif %}
+
+{% if site.data.display.homepage.show_selected_publications %}
+    {% assign pubs = site.publications | sort: "date" | reverse | where: "selected", true %}
+    {% if pubs.size > 0 %}
+    <div class="row mt-4">
+        <div class="col-12">
+            {% 
+            include widgets/publication_card.html 
+            publications=pubs 
+            title='<i class="fas fa-star"></i> Selected Publications' 
+            %}
+        </div>
+    </div>
+    {% endif %}
+{% endif %}
